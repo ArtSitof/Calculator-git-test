@@ -12,8 +12,10 @@ public class Calculator {
 
         System.out.println("Введите первое число");
         double numberOne = Double.parseDouble(reader.readLine());
+
         System.out.println("Введите второе число");
         double numberTwo = Double.parseDouble(reader.readLine());
+
         System.out.println("Введите какую операцию необходимо произвести.");
         System.out.println("""
                 Доступные операции:\s
@@ -22,29 +24,17 @@ public class Calculator {
                 '*' - произведение;\s
                 '/' - деление.""");
         char operation = reader.readLine().charAt(0);
-
-        double result = 0;
-
-        switch (operation) {
-            case '+':
-                result = numberOne + numberTwo;
-                break;
-            case '-':
-                result = numberOne - numberTwo;
-                break;
-            case '*':
-                result = numberOne * numberTwo;
-                break;
-            case '/':
-                result = numberOne / numberTwo;
-                break;
-        }
+        double result = switch (operation) {
+            case '+' -> numberOne + numberTwo;
+            case '-' -> numberOne - numberTwo;
+            case '*' -> numberOne * numberTwo;
+            case '/' -> numberOne / numberTwo;
+            default -> 0;
+        };
 
         System.out.println("Результат вычисления:");
         System.out.println(numberOne + " " + operation + " " + numberTwo + " = " + String.format("%.2f", result));
 
         return result;
     }
-
-
 }
