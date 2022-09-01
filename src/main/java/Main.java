@@ -1,5 +1,6 @@
 
 import calculator.Calculator;
+import exception.InvalidCharacterException;
 import util.Util;
 
 
@@ -10,8 +11,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Util u = new Util(new ArrayList<>());
 
-        u.addResultCalc(Calculator.makeACalculation());
-        u.addResultCalc(Calculator.makeACalculation());
+        try {
+            u.addResultCalc(Calculator.makeACalculation());
+        }
+        catch (InvalidCharacterException e) {
+            System.out.println(e.getMessage() + e.getOperation());
+        }
 
         System.out.println(u.getResultOfCalculation());
     }

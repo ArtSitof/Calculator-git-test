@@ -1,12 +1,14 @@
 package calculator;
 
+import exception.InvalidCharacterException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Calculator {
+public class Calculator  {
 
-    public static double makeACalculation() throws IOException {
+    public static double makeACalculation() throws IOException, InvalidCharacterException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -38,6 +40,8 @@ public class Calculator {
             case '/':
                 result = numberOne / numberTwo;
                 break;
+            default:
+                throw new InvalidCharacterException("Вы ввели не верный символ операции - ", operation);
         }
 
         System.out.println("Результат вычисления:");
